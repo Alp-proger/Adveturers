@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace AvaloniaApplication1
+namespace Adventurers
 {
     internal sealed class Program
     {

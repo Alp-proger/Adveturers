@@ -4,7 +4,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace AvaloniaApplication1.ViewModels
+namespace Adventurers.ViewModels
 {
     public class SimpleViewModel : INotifyPropertyChanged
     {

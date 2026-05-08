@@ -1,4 +1,4 @@
-﻿namespace AvaloniaApplication1.ViewModels
+﻿namespace Adventurers.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
