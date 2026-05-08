@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace Adventurers.ViewModels
 {
-    public class SimpleViewModel : INotifyPropertyChanged
+    public class VelcomeViewModel : INotifyPropertyChanged
     {
         private string? _Name; 
         public string? Name 
