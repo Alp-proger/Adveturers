@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="AvaloniaApplication1.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
+        x:CompileBindings="True"
+        x:DataType="vm:MainWindowViewModel"        
+        x:Class="AdventurersUI.Views.MainWindow"        
         Icon="/Assets/avalonia-logo.ico"
-        Title="AvaloniaApplication1">
+        Title="Adventurers">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,6 +16,11 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    <StackPanel DataContext="{Binding SimpleViewModel}" Spacing="10">
+        <TextBlock>Enter you name</>
+        <TextBox Text="{Binding Name}"/>
+        <TextBox Text="{Binding Greeting, Mode=OneWay}" 
+                 IsReadOnly="True"
+                 FontWeight="Bold" />
+        </StackPanel>
 </Window>
