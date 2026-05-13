@@ -21,7 +21,7 @@ namespace Adventurers.ViewModels
                 {
                     _Name = value;
                 }
-                RaisePropertyChanged();
+                
                 RaisePropertyChanged(nameof(Greeting));
             }
         }
@@ -46,6 +46,5 @@ namespace Adventurers.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-    }    
+    }     
 }
