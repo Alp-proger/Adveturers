@@ -1,6 +1,7 @@
 ﻿using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Adventurers.ViewModels
@@ -8,7 +9,8 @@ namespace Adventurers.ViewModels
     public class TabItemViewModel : ReactiveObject
     {
         private string _title = "";
-        private string _contentText = "";        
+        private string _contentText = "";                
+
 
         public string Title
         {
@@ -21,5 +23,7 @@ namespace Adventurers.ViewModels
             get => _contentText;
             set => this.RaiseAndSetIfChanged(ref _contentText, value);
         }
+
+        
     }
 }

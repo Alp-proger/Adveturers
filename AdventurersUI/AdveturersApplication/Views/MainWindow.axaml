@@ -3,6 +3,7 @@
         xmlns:vm="using:Adventurers.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="using:System"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:CompileBindings="True"
         x:DataType="vm:MainWindowViewModel"        
@@ -31,7 +32,12 @@
                     Foreground="White"
                     Padding="10,5"></Button>
         </StackPanel>
-        <TabControl Grid.Row="1" ItemsSource="{Binding Tabs}" Margin="10" TabStripPlacement="Left">
+
+        <TabControl Grid.Row="1" 
+                    ItemsSource="{Binding Tabs}" 
+                    Margin="10" 
+                    TabStripPlacement="Top">
+
             <TabControl.ItemTemplate>
                 <DataTemplate  x:DataType="vm:TabItemViewModel">
                     <StackPanel Orientation="Horizontal" Spacing="5">
@@ -40,36 +46,71 @@
                     </StackPanel>
                 </DataTemplate>
             </TabControl.ItemTemplate>
-            <TabControl.ContentTemplate>
-                <DataTemplate x:DataType="vm:TabItemViewModel">
-                    <Border Background="#F9F9F9" BorderBrush="LightGray" BorderThickness="1" CornerRadius="5" Padding="20">
-                        <ScrollViewer>
-                            <TextBlock FontSize="14" Foreground="#333333" Text="{Binding ContentText}" TextWrapping="Wrap"/>
-                        </ScrollViewer>
-                    </Border>
-                </DataTemplate>
-            </TabControl.ContentTemplate>
-			    <!--<TabItem Header="Simple ViewModel">
-			    <StackPanel DataContext="{Binding ReactiveViewModel}" Spacing="10">
-				    <TextBlock> Enter you name: </TextBlock>
-                    <TextBox Text="{Binding Name}" />
-                    <TextBox Text="{Binding Greeting, Mode=OneWay}"
-                             IsReadOnly="True"
-                             FontWeight="Bold" />
-                </StackPanel>
-            </TabItem>-->
-        </TabControl>
-        
-        <!--<TabControl Grid.Row="2">
-			<TabItem Header="Single ViewModel">
-            <StackPanel DataContext="{Binding SimpleViewModel}" Spacing="10">
-                <TextBlock>Enter you Name:</TextBlock>
-                <TextBox Text="{Binding Name}"/>
-                <TextBox Text="{Binding Greeting, Mode=OneWay}" 
-                         IsReadOnly="True"
-                         FontWeight="Bold" />
-            </StackPanel>
-            </TabItem>
-        </TabControl>-->
+
+            <TabControl.DataTemplates>                
+                <!--<DataTemplate DataType="{x:Type vm:ReactiveViewModel}">
+						<Border Padding="20" Background="#F9F9F9" CornerRadius="5">                            
+                            <StackPanel>
+                                <Label Content="Введите имя:"/>
+                                <TextBox Text="{Binding Name, Mode=TwoWay}" />
+
+                                <Label Content="Результат:"/>
+                                <TextBox Text="{Binding Greeting, Mode=OneWay}"
+                                         IsReadOnly="True"
+                                         FontWeight="Bold" />	
+                            </StackPanel>							
+                        </Border>
+                    </DataTemplate>-->
+                    <DataTemplate DataType="{x:Type vm:AdventurersViewModel}">
+						<Border Background="#F9F9F9" BorderBrush="LightGray" BorderThickness="1" CornerRadius="5" Padding="20">
+							<Grid RowDefinitions="Auto, *">
+								<TextBlock Grid.Row="0" FontSize="14" Margin="0,0,0,10" 
+                                           Text="{Binding ContentText}" FontWeight="Bold" />
+                                <DataGrid Grid.Row="1"
+                                          ItemsSource="{Binding Activities}"
+                                          AutoGenerateColumns="False"
+                                          IsReadOnly="True"
+                                          GridLinesVisibility="All"
+                                          BorderThickness="1"
+                                          BorderBrush="Gainsboro">
+                                    <DataGrid.Columns>
+										<DataGridTextColumn Header="Место"
+                                                            x:DataType="vm:Activity"
+                                                            Binding="{Binding Plase}"
+                                                            Width="100"/>
+                                        <DataGridTextColumn Header="Гид"
+                                                            x:DataType="vm:Activity"
+                                                            Binding="{Binding GidName}"
+                                                            Width="*"/>
+                                        <DataGridTextColumn Header="Местность"
+                                                            x:DataType="vm:Activity"
+                                                            Binding="{Binding Location}"
+                                                            Width="*"/>
+                                        <DataGridTextColumn Header="Количество участников"
+                                                            x:DataType="vm:Activity"
+                                                            Binding="{Binding AdventurersCount}"
+                                                            Width="*"/>
+                                        <DataGridTextColumn Header="Уровень сложности"
+                                                            x:DataType="vm:Activity"
+                                                            Binding="{Binding DifficultsLevel}"
+                                                            Width="*"/>
+                                    </DataGrid.Columns>
+                                
+                                </DataGrid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type vm:TabItemViewModel}">
+                        <Border Background="#F9F9F9" BorderBrush="LightGray" BorderThickness="1" CornerRadius="5" Padding="20">
+                            <ScrollViewer>
+                                <TextBlock FontSize="14" Foreground="#333333" Text="{Binding ContentText}" TextWrapping="Wrap"/>
+                            </ScrollViewer>
+                        </Border> 
+                    </DataTemplate>
+
+                            
+            </TabControl.DataTemplates>		
+        </TabControl>        
     </Grid>
 </Window>

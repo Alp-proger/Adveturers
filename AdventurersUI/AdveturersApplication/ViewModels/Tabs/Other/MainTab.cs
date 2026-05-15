@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Adventurers.ViewModels
 {
-    public class Tab1 : TabItemViewModel
+    public class MainTab : TabItemViewModel
     {
-        public Tab1()
+        public MainTab()
         {            
             Title = "Главная";
             ContentText = "Добро пожаловать в приложение";

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Adventurers.ViewModels
 {
-    public class Tab2 : TabItemViewModel
+    public class AboutTab : TabItemViewModel
     {
-        public Tab2()
+        public AboutTab()
         {
             Title = "О приложении";
             ContentText = "Информация о функциях и разработчиках";

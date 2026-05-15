@@ -8,8 +8,7 @@ namespace Adventurers.ViewModels
 {
     public partial class MainWindowViewModel : ReactiveObject
     {
-        public string Greeting { get; } = "Welcome to Avalonia!";
-        public VelcomeViewModel SimpleViewModel { get; } = new VelcomeViewModel();
+        public string Greeting { get; } = "Welcome to Avalonia!";        
         public ReactiveViewModel ReactiveViewModel { get; } = new ReactiveViewModel();
 
 
@@ -31,15 +30,19 @@ namespace Adventurers.ViewModels
             SelectedTab = Tabs.First();
 
             AddTabCommand = ReactiveCommand.Create(AddNewTab);
+            _selectedTab = Tabs[0];
         }
 
         private ObservableCollection<TabItemViewModel> StartTabsCreate()
         {
             return new ObservableCollection<TabItemViewModel>()
             {
-                new Tab1(),                
-                new ReactiveViewModel(),                
-                new Tab2()                
+                new MainTab(),                
+                new Montain(),
+                new Forest(),
+                new River(),
+                new Desert(),
+                new AboutTab()                
             };
         }
 
